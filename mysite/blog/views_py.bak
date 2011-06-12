@@ -1,0 +1,26 @@
+# Create your views here.
+from django.shortcuts import render_to_response, get_object_or_404
+from django.http import HttpResponse
+from models import Article
+
+def xhr_test(request):
+    if request.is_ajax():
+        message = "Hello AJAX"
+    else:
+        message = "Hello"
+    return HttpResponse(message)
+
+def list(request):
+    title = 'Robs Blog'
+    heading = 'Robs Blog'
+    posts = Article.objects.all()
+    # content = '<p>Here is a paragraph</p>'
+    return render_to_response('blog/list.html', {'posts':posts, 'title':title, 'heading':heading})
+
+def detail(request, blog_id):
+    post = get_object_or_404(Article, pk=blog_id)
+    return render_to_response('blog/detail.html', {'post':post})
+
+def tags(request, blog_id):
+    tags = get_object_or_404(Article, pk=blog_id)
+    return render_to_response('blog/tags.html', {'tags':tags})

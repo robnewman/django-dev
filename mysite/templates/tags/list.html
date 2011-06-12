@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block heading %}{% endblock %}
+
+{% block content %}
+
+    {% if object_list %}
+        <p>Found {{ object_list|length }} blog post{{ object_list|pluralize }} with the tag <span class="mytag">{{ tag }}</span>.</p>
+        {% for o in object_list %}
+            <h2>{{ o.title }}</h2>
+            <p class="author">Posted by {{ o.author }} on {{ o.date }}</p>
+            <p class="teaser">{{ o.content|truncatewords:20 }}</p>
+            <p class="more"><a href="/blog{{ o.get_absolute_url }}">Read full post &raquo;</a></p>
+        {% endfor %}
+    {% endif %}
+
+    <div id="base">
+       <p><a href="/blog/">&laquo; Back to blog index</a></p>
+    </div>
+
+{% endblock %}

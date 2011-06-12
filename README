@@ -1,0 +1,5 @@
+This repository contains example Python Django Apps that I have written. All the applications are in the mysite directory.
+
+Currently this consists of a custom blog application I have written.
+
+Everything is released under a MIT-style license (i.e. do whatever you want with it, just don't hold me responsible for anything bad that happens).

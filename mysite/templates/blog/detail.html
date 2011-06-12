@@ -1,0 +1,54 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block heading %}{% endblock %}
+
+{% block content %}
+
+    <ul class="page-nav">
+    {% if posts.get_previous_published %}
+        <li class="left"><a href="/blog{{ posts.get_previous_published.get_absolute_url }}" title="{{ posts.get_previous_published.title}}">&laquo; Previous post</a></li>
+    {% endif %}
+    {% if posts.get_next_published %}
+        <li class="right"><a href="/blog{{ posts.get_next_published.get_absolute_url }}" title="{{posts.get_next_published.title}}">Next post &raquo;</a></li>
+    {% endif %}
+    </ul>
+
+    <h2>{{ posts.title }}</h2>
+    <p class="author">Posted by {{ posts.author }} on {{ posts.date }}</p>
+
+    <div id="post">
+        <p>{{ posts.content }}</p>
+    </div>
+
+    <div id="tags">
+        <h3>Tags</h3>
+        <p>
+        {% for tag in posts.get_tags %}
+            <a href="/blog/tag/{{tag}}" alt="{{tag}}" title="{{tag}}">{{tag}}</a>
+        {%endfor%}
+        </p>
+    </div>
+
+    {% if posts.image %}
+        <div id="image">
+            <img src="{{ posts.image }}" alt="Blog post image" />
+        </div>
+    {% endif %}
+
+    <div id="slug">
+        <h3>Slug</h3>
+        <p>{{ posts.slug }}</p>
+    </div>
+
+    <div id="comments">
+        <h3>Comments</h3>
+        <p>Comments are currently: OFF</p>
+    </div>
+
+    <div id="base">
+       <p><a href="/blog/">&laquo; Back to blog index</a></p>
+    </div>
+
+{% endblock %}

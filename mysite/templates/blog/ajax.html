@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Ajax Test Case{% endblock %}
+
+{% block heading %}Testing Ajax Query and Response{% endblock %}
+
+{% block content %}
+
+<script language="javascript">
+// Not current handled in urls.py and no view
+(function() {
+    $.get("/xhr_test", function(data) {
+        alert(data);
+    });
+});
+</script>
+{% endblock %}

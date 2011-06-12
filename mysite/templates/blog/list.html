@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+    {% if posts_list %}
+        <div id="list">
+        {% if year %}
+            <p>List of blog posts from {{year}} by month:</p>
+            <ul>
+            {% for month in date_list %}
+                <li><a href="/blog/{{month|date:"Y"}}/{{month|date:"b"}}">{{month|date:"F"}}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if month %}
+            <p>List of blog posts from {{month|date:"F"}}, {{month|date:"Y"}} by day:</p>
+            <ul>
+            {% for days in date_list %}
+                <li><a href="/blog/{{days|date:"Y"}}/{{days|date:"b"}}/{{days|date:"d"}}">{{days|date:"d"}}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if day %}
+            <p>List of blog posts from {{day|date:"F"}} {{day|date:"d"}}, {{day|date:"Y"}} by slug:</p>
+            <ul>
+            {% for slugs in posts_list %}
+                <li><a href="/blog{{ slugs.get_absolute_url }}">{{slugs}}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </div>
+    {% else %}
+        <p>There are currently <strong>{{ posts|length }}</strong> blog post{{ posts|pluralize }}.</p>
+        {% for p in posts %}
+            <h2>{{ p.title }}</h2>
+            <p class="author">Posted by {{ p.author }} on {{ p.date }}</p>
+            <p class="teaser">{{ p.content|truncatewords:20 }}</p>
+            <p class="more"><a href="/blog{{ p.get_absolute_url }}">Read full post &raquo;</a></p>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

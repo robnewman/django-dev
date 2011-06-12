@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}Super Simple Django Blog Roll (SSDBR){% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster">
+    <style type="text/css">
+    html, body { margin:0;padding:0;font-size:120%;font-family:Arial,Helvetica,sans-serif;background-color:#666; }
+    div#header { 
+        margin:0 auto;
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(219,15,15)),
+            color-stop(1, rgb(242,126,205))
+        );
+        background-image: -moz-linear-gradient(
+            center bottom,
+            rgb(219,15,15) 0%,
+            rgb(242,126,205) 100%
+        );
+        border-bottom:2px solid #000;
+    }
+    div#header h1 { font-family:'Lobster',Georgia,serif;margin:0 auto;text-align:center;padding:10px;color:#FFF;text-shadow: 2px 2px 2px #000; }
+    div#content { 
+        margin:0 auto;padding:10px; 
+        background-image: -webkit-gradient(
+            linear,
+            left bottom,
+            left top,
+            color-stop(0, rgb(102,102,102)),
+            color-stop(1, rgb(0,0,0))
+        );
+        background-image: -moz-linear-gradient(
+            center bottom,
+            rgb(102,102,102) 0%,
+            rgb(0,0,0) 100%
+        );
+        color:#FFF;
+        border-top:1px solid #FFF;
+        border-bottom:2px solid #000;
+    }
+    div#content h2 { font-family:'Lobster',Georgia,serif;font-size:100%;font-weight:200;line-height:100%;clear:both; }
+    div#content p { margin:0;padding:0;font-size:85%;font-family:Arial,sans-serif; }
+    div#content ul { list-style:none;margin:0;padding:0; }
+    div#content li { margin:10px 0;padding:0;font-size:85%;font-family:Arial,sans-serif; }
+    div#content p.author { color:#CCC;line-height:105%; }
+    div#content p.more { color:#CCC; }
+    div#content span.mytag { font-size:110%;color:#DF0F0F;font-weight:bold; }
+    div#content a, div#content a:link, div#content a:active, div#content a:visited { color:#DF0F0F; }
+    div#content a, div#content a:hover { color:#F67ECC; }
+    div#content ul.page-nav { list-style:none;display:block; }
+    div#content ul.page-nav:after { clear:both; }
+    div#content ul.page-nav li.left { float:left; }
+    div#content ul.page-nav li.right { float:right; }
+    div#post { margin:10px 0; }
+    div#post p { font-family:Arial,sans-serif;font-size:95%;line-height:105%;font-weight:200; }
+    div#tags h3, div#slug h3, div#comments h3 { font-family:'Lobster',Georgia,serif;font-size:100%;font-weight:200;margin-bottom:0px;padding-bottom:0;line-height:100%; }
+    div#base { margin:10px 0;padding:0; }
+    div#footer { border-top:1px solid #FFF;padding-top:20px; }
+    div#footer p { margin:0;padding:0 10px;font-family:Arial,sans-serif;font-size:95%;line-height:105%;font-weight:200;color:#444; }
+    div#footer a, div#footer a:link, div#footer a:active, div#footer a:visited { color:#092E20; }
+    div#footer a:hover { color:#92CC47; }
+    </style>
+</head>
+
+
+<body>
+    <div id="header">
+        <h1>Super Simple Django Blog Roll</h1>
+    </div>
+
+    <div id="content">
+        <p>Welcome to my simple blogging application.</p>
+
+        {% block content %}
+        <p>To do list:</p>
+        <ol>
+            <li>allow comments (enabled in the model, but no form built)</li>
+            <li>integrate jQuery to show/move through comments and transition between posts</li>
+        </ol>
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+            <p>&copy; 2011 Rob's Super Simple Django Blog Roll | Written using <a href="http://www.djangoproject.com/" class="django">Django</a></p>
+        {% endblock %}
+    <div>
+
+</body>
+
+</html>
