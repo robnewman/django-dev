@@ -19,9 +19,10 @@ __init__.py tells Django that the current directory
             package-level initialization code.
 
 You define:
-    * application models in models.py
-    * any tests (for TDD) in tests.py
-    * your application specific views in views.py
+
+* application models in models.py
+* any tests (for TDD) in tests.py
+* your application specific views in views.py
 
 Create the database tables
 ==========================
@@ -47,9 +48,21 @@ Add to the Django Admin interface
 Make sure you create an admin.py in order to expose
 your app to the Django admin interface:
 
-> cat admin.py
+
 from django.contrib import admin
-from portfolio.models import *
+from models import Item, Shape
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+class ShapeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin.site.register(Item, ItemAdmin)
+admin.site.register(Shape, ShapeAdmin)
+
 
 Restart Apache
 ==============

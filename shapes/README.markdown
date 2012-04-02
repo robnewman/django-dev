@@ -23,9 +23,9 @@ package-level initialization code.
 
 You define:
 
-+ Application models in models.py
-+ Any tests (for TDD) in tests.py
-+ Your application specific views in views.py
+* application models in models.py
+* any tests (for TDD) in tests.py
+* your application specific views in views.py
 
 # Create the database tables
 Once you have defined your models, you sync with the
@@ -51,10 +51,20 @@ the many-to-many shape relationship to items
 Make sure you create an admin.py in order to expose
 your app to the Django admin interface:
 
-```bash
-> cat admin.py
+```python
 from django.contrib import admin
-from portfolio.models import *
+from models import Item, Shape
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+class ShapeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+admin.site.register(Item, ItemAdmin)
+admin.site.register(Shape, ShapeAdmin)
 ```
 
 # Restart Apache
