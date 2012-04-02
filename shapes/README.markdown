@@ -23,6 +23,7 @@ is a package and where you define any
 package-level initialization code.
 
 You define:
+
 + Application models in models.py
 + Any tests (for TDD) in tests.py
 + Your application specific views in views.py
