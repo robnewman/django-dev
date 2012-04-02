@@ -21,9 +21,9 @@ __init__.py tells Django that the current directory
             package-level initialization code.
 
 You define:
-* application models in models.py
-* any tests (for TDD) in tests.py
-* your application specific views in views.py
+* Application models in models.py
+* Any tests (for TDD) in tests.py
+* Your application specific views in views.py
 
 # Create the database tables
 Once you have defined your models, you sync with the
