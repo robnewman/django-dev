@@ -17,8 +17,7 @@ views.py
 
 # Detail
 
-## __init__.py
-Tells Django that the current directory
+*__init__.py* tells Django that the current directory
 is a package and where you define any
 package-level initialization code.
 
