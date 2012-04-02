@@ -16,14 +16,16 @@ views.py
 ```
 
 # Detail
-__init__.py tells Django that the current directory
-            is a package and where you define any
-            package-level initialization code.
+
+## __init__.py
+Tells Django that the current directory
+is a package and where you define any
+package-level initialization code.
 
 You define:
-* Application models in models.py
-* Any tests (for TDD) in tests.py
-* Your application specific views in views.py
++ Application models in models.py
++ Any tests (for TDD) in tests.py
++ Your application specific views in views.py
 
 # Create the database tables
 Once you have defined your models, you sync with the
